@@ -293,3 +293,7 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 
 - [KeyAuth.cc](https://keyauth.cc) for their premium authentication services.
 - [LicenseAuth.host](https://licenseauth.host) for providing free authentication solutions.
+## Credits
+
+Special thanks to @Filzer_OP for their help with the project.
+
