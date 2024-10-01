@@ -2,6 +2,7 @@
 # Android C++ Shared Library with KeyAuth.cc and LicenseAuth.host Integration
 
 ## Overview
+![App Screenshot](https://example.com/screenshot.png)
 
 This project is a C++ shared library for Android, designed to integrate with two login systems:
 
