@@ -88,8 +88,69 @@ The chat functionality is integrated to allow users to communicate in real-time.
 ### KeyAuth Login Example
 
 ```cpp
-bool login(const std::string& username, const std::string& password) {
-    // Call the KeyAuth.cc login API and return the result
+void CheckKey()
+{
+	if (!isrequestcompleted)
+	{
+		return;
+	}
+	showCircle = true;
+	isrequestcompleted = false;
+	authtextcolor = { 1.00f, 1.00f, 1.00f, 1.00f };
+	authtext = ("Preparing for authentication...");
+	
+	if (!iskeyauthinited)
+	{
+		keyAuth.init();
+		iskeyauthinited = true;
+	}
+	int returnsvr = keyAuth.license(username);
+	if (returnsvr == 0)
+	{
+		
+		authtextcolor = { 0.07f,0.52f,0.17f,1.0f };
+		authtext = ("Activated successfully starting...");
+		notificationSystem.AddNotification("Welcome to Osiris Hax", 4000);
+        std::this_thread::sleep_for(std::chrono::seconds(1));
+		showCircle = false;
+	     iLogin = true;
+		return;
+	}
+	else if (returnsvr == 1)
+	{
+		authtextcolor = { 1.0f,0.0f,0.0f,1.0f };
+		authtext = ("This license has been banned.");
+	}
+	else if (returnsvr == 10)
+	{
+		authtextcolor = { 1.0f,0.0f,0.0f,1.0f };
+		authtext = ("Connection failed. Unable to connect to host.");
+		isrequestcompleted = true;
+		return;
+	}
+	else if (returnsvr == 2)
+	{
+		authtextcolor = { 1.0f,0.0f,0.0f,1.0f };
+		authtext = ("Device ID is not match.");
+	}
+	else if (returnsvr == 3)
+	{
+		authtextcolor = { 1.0f,0.0f,0.0f,1.0f };
+		authtext = ("Invalid key.");
+	}
+	else if (returnsvr == 4)
+	{
+		authtextcolor = { 1.0f,0.0f,0.0f,1.0f };
+		authtext = ("License is expired.");
+	}
+	else
+	{
+		authtextcolor = { 1.0f,0.0f,0.0f,1.0f };
+		authtext = ("Invalid key.");
+	}
+
+	isrequestcompleted = true;
+	return;
 }
 ```
 
